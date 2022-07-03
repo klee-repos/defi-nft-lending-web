@@ -1,0 +1,50 @@
+// scss variables
+@import "./variables";
+
+.drawer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.drawer-card-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px $side-padding 20px $side-padding;
+  max-width: $drawer-max-width;
+}
+
+.drawer-title-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.drawer-content-row {
+  display: flex;
+  width: 100%;
+}
+
+.drawer-content-button-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.drawer-button-container {
+  display: flex;
+}
+
+.drawer-header {
+  color: $black;
+  font-family: $header-font;
+  font-size: 24px;
+}
