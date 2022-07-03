@@ -11,6 +11,7 @@ import {
   SetBorrowed,
   WithdrawNFT,
   BorrowETH,
+  PayBackETH,
 } from "../../contracts/LendingContract";
 
 export const DepositNFTButton = observer(({ user }) => (
@@ -197,6 +198,67 @@ export const BorrowETHCancelButton = observer(({ user }) => (
     color="secondary"
     onClick={() => {
       user.setBorrowETHDrawer(false);
+    }}
+  >
+    Cancel
+  </Button>
+));
+
+async function handlePaybackLoan(user) {
+  try {
+    // transfer
+    let success = await PayBackETH(user);
+    if (success) {
+      // update state
+      await SetHealthscore(user);
+      await SetAccountCollateral(user);
+      await SetBorrowed(user);
+      // close drawer
+      user.setPayLoanDrawer(false);
+      user.setPayBackETHSuccessSnackbar(true);
+      return;
+    }
+    user.setPayLoanDrawer(false);
+    user.setErrorSnackbar(true);
+    return;
+  } catch (e) {
+    console.log(e);
+    user.setErrorSnackbar(true);
+  }
+}
+
+export const PayBackETHDrawerButton = observer(({ user }) => (
+  <Button
+    variant="contained"
+    theme={primary}
+    color="secondary"
+    onClick={() => {
+      handlePaybackLoan(user);
+    }}
+  >
+    Submit
+  </Button>
+));
+
+export const PayBackETHButton = observer(({ user }) => (
+  <Button
+    variant="contained"
+    theme={primary}
+    onClick={() => {
+      user.setPayLoanDrawer(true);
+    }}
+  >
+    Repay ETH
+  </Button>
+));
+
+export const PayBackETHCancelButton = observer(({ user }) => (
+  <Button
+    variant="outlined"
+    theme={primary}
+    color="secondary"
+    onClick={() => {
+      user.setPayLoanDrawer(false);
     }}
   >
     Cancel

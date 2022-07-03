@@ -9,6 +9,7 @@ import MenuDrawer from "../MenuDrawer";
 import DepositNFTDrawer from "./DepositNFTDrawer";
 import WithdrawNFTDrawer from "./WithdrawNFTDrawer";
 import BorrowETHDrawer from "./BorrowETHDrawer";
+import PayLoanDrawer from "./PayLoanDrawer";
 import { connectWeb3Wallet } from "../../utils/InitHelper";
 import {
   ObserveErrorSnackbar,
@@ -20,6 +21,7 @@ import {
   DepositNFTButton,
   WithdrawNFTButton,
   BorrowETHButton,
+  PayBackETHButton,
 } from "./DashboardButtons";
 
 function initialLoad(user, cookies, db) {
@@ -61,7 +63,7 @@ function initialLoad(user, cookies, db) {
                   </div>
                 </div>
               </div>
-              <div className="card">
+              <div className="card margin-bottom">
                 <div className="card-row">
                   <div className="button-container margin-right">
                     <DepositNFTButton user={user} />
@@ -69,8 +71,15 @@ function initialLoad(user, cookies, db) {
                   <div className="button-container margin-right">
                     <WithdrawNFTButton user={user} />
                   </div>
-                  <div className="button-container">
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-row">
+                  <div className="button-container margin-right">
                     <BorrowETHButton user={user} />
+                  </div>
+                  <div className="button-container">
+                    <PayBackETHButton user={user} />
                   </div>
                 </div>
               </div>
@@ -85,6 +94,7 @@ function initialLoad(user, cookies, db) {
         <DepositNFTDrawer user={user} />
         <WithdrawNFTDrawer user={user} />
         <BorrowETHDrawer user={user} />
+        <PayLoanDrawer user={user} />
         <ObserveErrorSnackbar user={user} />
         <ObserveDepositNFTSuccessSnackbar user={user} />
         <ObserveWithdrawNFTSuccessSnackbar user={user} />

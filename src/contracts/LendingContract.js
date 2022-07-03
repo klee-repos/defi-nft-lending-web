@@ -156,3 +156,19 @@ export async function BorrowETH(user) {
     return false;
   }
 }
+
+export async function PayBackETH(user) {
+  try {
+    console.log(user.loanPaymentInput);
+    let tx = await user.lendingContract.payBackETH({
+      value: ethers.utils.parseEther(`${user.loanPaymentInput}`),
+    });
+    let txReceipt = await tx.wait();
+    console.log(txReceipt);
+    return true;
+  } catch (e) {
+    console.log(e);
+    user.setErrorSnackbar(true);
+    return false;
+  }
+}

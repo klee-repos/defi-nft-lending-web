@@ -45,7 +45,19 @@ export const ObserveBorrowETHSuccessSnackbar = observer(({ user }) => (
     onClose={() => {
       user.setBorrowETHSuccessSnackbar(false);
     }}
-    message={`💵 Loan accepted! Borrowed increased to $${user.borrowed}`}
+    message={`💵 Loan accepted! Borrowed total increased to $${user.borrowed}`}
+    anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+  />
+));
+
+export const ObservePayBackETHSuccessSnackbar = observer(({ user }) => (
+  <Snackbar
+    open={user.payBackETHSuccessSnackbar}
+    autoHideDuration={4000}
+    onClose={() => {
+      user.setPayBackETHSuccessSnackbar(false);
+    }}
+    message={`💵 Payment success! Borrowed total deceased to $${user.borrowed}`}
     anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
   />
 ));

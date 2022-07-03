@@ -26,15 +26,30 @@ class User {
   depositNFTDrawer = false;
   withdrawNFTDrawer = false;
   borrowETHDrawer = false;
+  payLoanDrawer = false;
   // inputs
   selectedProjectDropdown = 0;
   nftTokenIdInput = 0;
   borrowETHInput = 0;
+  loanPaymentInput = 0;
   // snackbars
   errorSnackbar = false;
   depositNFTSuccessSnackbar = false;
   withdrawNFTSuccessSnackbar = false;
   borrowETHSuccessSnackbar = false;
+  payBackETHSuccessSnackbar = false;
+
+  async setPayBackETHSuccessSnackbar(payBackETHSuccessSnackbar) {
+    this.payBackETHSuccessSnackbar = payBackETHSuccessSnackbar;
+  }
+
+  async setLoanPaymentInput(loanPaymentInput) {
+    this.loanPaymentInput = loanPaymentInput;
+  }
+
+  async setPayLoanDrawer(payLoanDrawer) {
+    this.payLoanDrawer = payLoanDrawer;
+  }
 
   async setBorrowETHSuccessSnackbar(borrowETHSuccessSnackbar) {
     this.borrowETHSuccessSnackbar = borrowETHSuccessSnackbar;

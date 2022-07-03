@@ -47,7 +47,7 @@ export const NFTTokenIDInput = observer(({ user }) => (
 export const BorrowETHInput = observer(({ user }) => (
   <TextField
     id="borrow-eth-input"
-    label="Borrow amount"
+    label="Borrow amount (ETH)"
     variant="outlined"
     size="small"
     sx={{ width: "100%" }}
@@ -55,6 +55,23 @@ export const BorrowETHInput = observer(({ user }) => (
       user.setBorrowETHInput(e.target.value);
     }}
     value={user.borrowETHInput}
+    InputProps={{
+      endAdornment: <InputAdornment position="start">ETH</InputAdornment>,
+    }}
+  />
+));
+
+export const PayLoanInput = observer(({ user }) => (
+  <TextField
+    id="pay-loan-eth-input"
+    label="Payment amount (ETH)"
+    variant="outlined"
+    size="small"
+    sx={{ width: "100%" }}
+    onChange={(e) => {
+      user.setLoanPaymentInput(e.target.value);
+    }}
+    value={user.loanPaymentInput}
     InputProps={{
       endAdornment: <InputAdornment position="start">ETH</InputAdornment>,
     }}
